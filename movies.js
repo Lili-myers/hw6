@@ -23,7 +23,6 @@ window.addEventListener('DOMContentLoaded', async function(event) {
     let json = await movies.json()
     console.log(json)
 
-
     // ⬆️ ⬆️ ⬆️ 
     // End Step 1
     
