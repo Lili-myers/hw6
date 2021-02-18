@@ -46,10 +46,8 @@ window.addEventListener('DOMContentLoaded', async function(event) {
             <div class="w-1/5 p-4 movie-${movieID}">
                 <img src="https://image.tmdb.org/t/p/w500/${movieArray[i].poster_path}" class="w-full">
                     <a href="#" class="watched-button block text-center text-white bg-green-500 mt-4 px-4 py-2 rounded">I've watched this!</a>
-                </div>` 
+                </div>`
                 )
-            }
-
 
     // ⬆️ ⬆️ ⬆️ 
     // End Step 2
@@ -66,6 +64,13 @@ window.addEventListener('DOMContentLoaded', async function(event) {
     //   to remove the class if the element already contains it.
     // ⬇️ ⬇️ ⬇️
   
+    document.querySelector(`.movie-${movieID} .watched-button`).addEventListener('click',async function (event) {
+    event.preventDefault()
+    document.querySelector(`.movie-{$movieID}`).w-full`).classList.add('opacity-20')
+    await db.collection('Watched').doc(`${movieID}.set ({})
+    })
+}
+
     // ⬆️ ⬆️ ⬆️ 
     // End Step 3
   
