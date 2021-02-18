@@ -18,10 +18,11 @@ window.addEventListener('DOMContentLoaded', async function(event) {
     // console to ensure you've got good data
     // ⬇️ ⬇️ ⬇️
 
+    let db = firebase.firestore()
     let movies = await fetch (`https://api.themoviedb.org/3/movie/now_playing?api_key=35e0bb1c2b89da0319ec186e93044950&language=en-US`)
     let json = await movies.json()
-  
     console.log(json)
+
 
     // ⬆️ ⬆️ ⬆️ 
     // End Step 1
@@ -42,6 +43,7 @@ window.addEventListener('DOMContentLoaded', async function(event) {
     let movieArray = json.results
     for (let i = 0; i < movieArray.length; i++) {
         let movieId = movieArray[i].id
+        console.log(movieId)
         document.querySelector(`.movies`).insertAdjacentHTML('beforeend',`
             <div class="w-1/5 p-4 movie-${movieId}">
                 <img src="https://image.tmdb.org/t/p/w500/${movieArray[i].poster_path}" class="w-full">
@@ -66,8 +68,8 @@ window.addEventListener('DOMContentLoaded', async function(event) {
   
     document.querySelector(`.movie-${movieId} .watched-button`).addEventListener('click', async function (event) {
     event.preventDefault()
-    document.querySelector(`.movie-{$movieId}`) .w-full`).classList.add('opacity-20')
-    document.querySelector(`.movie-{$movieId}`) .watched-button`).classList.add('opacity-20')
+    document.querySelector(`.movie-${movieId} .w-full`).classList.add('opacity-20')
+    document.querySelector(`.movie-${movieId} .watched-button`).classList.add('opacity-20')
     await db.collection('Watched').doc(`${movieId}`).set ({})
     })
 }
@@ -75,12 +77,12 @@ window.addEventListener('DOMContentLoaded', async function(event) {
     let Watched = querySnapshot.docs
     for (let j=0; j < Watched.length; j++) {
     if(Watched[j]) {
-        let movieID = Watched[j].id 
-            console.log(movieId)
-            document.querySelector(`.movie-{$movieId}`).w-full`).classList.add('opacity-20')
-            document.querySelector(`.movie-{$movieId}`).watched-button`).classList.add('opacity-20')
-    } 
+        let movieId = Watched[j].id 
+            //console.log(movieId)
+            document.querySelector(`.movie-${movieId} .w-full`).classList.add('opacity-20')
+            document.querySelector(`.movie-${movieId} .watched-button`).classList.add('opacity-20')
     }
+}
 
     // ⬆️ ⬆️ ⬆️ 
     // End Step 3
