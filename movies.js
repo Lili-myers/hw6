@@ -39,6 +39,18 @@ window.addEventListener('DOMContentLoaded', async function(event) {
     // </div>
     // ⬇️ ⬇️ ⬇️
   
+    let movieArray = json.results
+    for (let i = 0; i < movieArray.length; i++) {
+        let movieID = movieArray[i].id
+        document.querySelector(`.movies`).insertAdjacentHTML('beforeend',`
+            <div class="w-1/5 p-4 movie-${movieID}">
+                <img src="https://image.tmdb.org/t/p/w500/${movieArray[i].poster_path}" class="w-full">
+                    <a href="#" class="watched-button block text-center text-white bg-green-500 mt-4 px-4 py-2 rounded">I've watched this!</a>
+                </div>` 
+                )
+            }
+
+
     // ⬆️ ⬆️ ⬆️ 
     // End Step 2
   
