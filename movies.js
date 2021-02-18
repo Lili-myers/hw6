@@ -71,15 +71,14 @@ window.addEventListener('DOMContentLoaded', async function(event) {
     await db.collection('Watched').doc(`${movieId}`).set ({})
     })
 }
-
     let querySnapshot = await db.collection('Watched').get()
     let Watched = querySnapshot.docs
     for (let j=0; j < Watched.length; j++) {
     if(Watched[j]) {
         let movieID = Watched[j].id 
-            console.log(movieID)
-            document.querySelector(`.movie-{$movieID}`).w-full`).classList.add('opacity-20')
-            document.querySelector(`.movie-{$movieID}`).watched-button`).classList.add('opacity-20')
+            console.log(movieId)
+            document.querySelector(`.movie-{$movieId}`).w-full`).classList.add('opacity-20')
+            document.querySelector(`.movie-{$movieId}`).watched-button`).classList.add('opacity-20')
     } 
     }
 
